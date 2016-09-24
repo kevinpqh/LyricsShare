@@ -1,0 +1,76 @@
+extends layout
+
+block content
+  .row
+      .col-md-8
+        .row
+          .col-md-12
+            img.img-responsive.pad.no-padding(src='dist/img/photo2.png', alt='Photo')
+          .col-md-12
+            .box.box-success
+              .box-body
+                .user-block
+                  img.img-circle(src='../dist/img/user1-128x128.jpg', alt='User Image')
+                  span.username
+                    a(href='#') Luis Yanque
+                  span.description Publico - HOY a las 7:30 PM
+                ul.list-inline
+                  li
+                    a.link-black.text-sm(href='#')
+                      i.fa.fa-share.margin-r-5
+                      |  Compartir
+                  li
+                    a.link-black.text-sm(href='#')
+                      i.fa.fa-thumbs-o-up.margin-r-5
+                      |  Like
+                  li.pull-right
+                    a.link-black.text-sm(href='#')
+                      i.fa.fa-comments-o.margin-r-5
+                      |  Comentarios
+                      |                                                     (5)
+      .col-md-4
+        .col-md-12
+          .box.panel.panel-default
+            .box-header.panel-heading
+              h3.box-title Titulo de La cancion
+            .box-body
+              table.table.table-condensed
+                tr
+                  th GENERO
+                  td
+                    span.badge.bg-red Salsa
+                tr
+                  th ALBUM
+                  td
+                    span.badge.bg-yellow SFSF
+                tr
+                  th INTERPRETE
+                  td
+                    span.badge.bg-light-blue SDFF
+                tr
+                  th PAIS
+                  td
+                    span.badge.bg-green SDFS
+        .col-md-12
+          .box-footer.box-comments
+            .box-comment
+              img.img-circle.img-sm(src='dist/img/user3-128x128.jpg', alt='User Image')
+              .comment-text
+                span.username
+                  | Maria Gonzales
+                  span.text-muted.pull-right Hoy 8:03 PM
+                |                                         It is a long established fact that a reader will be distracted
+                |                                         by the readable content of a page when looking at its layout.
+            .box-comment
+              img.img-circle.img-sm(src='dist/img/user4-128x128.jpg', alt='User Image')
+              .comment-text
+                span.username
+                  | Luna Stark
+                  span.text-muted.pull-right Hoy 8:03 PM
+                |                                         It is a long established fact that a reader will be distracted
+                |                                         by the readable content of a page when looking at its layout.
+          .box-footer
+            form(action='#', method='post')
+              img.img-responsive.img-circle.img-sm(src='dist/img/user4-128x128.jpg', alt='Alt Text')
+              .img-push
+                input.form-control.input-sm(type='text', placeholder='Press enter to post comment')
