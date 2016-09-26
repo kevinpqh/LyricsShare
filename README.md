@@ -1,3 +1,4 @@
+#INTRODUCCIÓN A NUEVAS PLATAFORMAS
 # LyricsShare
 Red social de letras de música
 
@@ -8,3 +9,4 @@ Red social de letras de música
 - Guzman Quispe, Pablo Fernando
 - Paredes Apaza, Isabel Angelica Lucia
 - Quispe Huaman, Kevin Percy
+
