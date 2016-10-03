@@ -9,8 +9,8 @@ block content
             .user-block
               img.img-circle(src='../dist/img/user1-128x128.jpg', alt='User Image')
               span.username
-                a(href='#') Luis Yanque
-              span.description Publico - HOY a las 7:30 PM
+                a(href='#') #{usuario.nombre} #{usuario.apellido}
+              span.description Publico - #{fecha.dia} a las #{fecha.hora}
             .box-tools
               button.btn.btn-box-tool(type='button', data-toggle='tooltip', title='Marcar como visto')
                 i.fa.fa-circle-o
@@ -21,26 +21,27 @@ block content
           .box-body
             .row
               .col-md-5
-                img.img-responsive.pad(src='dist/img/photo2.png', alt='Photo')
+                img.img-responsive.pad(src='dist/img/imagen03.jpg', alt='Photo')
               .col-md-7
                 h4.attachment-heading
-                  a(href='http://www.lipsum.com/') Lorem ipsum text generator
+                  a(href='#') #{tituloCancion}
                 p
-                  | I took this photo this morning. What do you guys think?khgjhgljhglkjgljgljglkjgljglglg
+                  | #{letraCancion}
             button.btn.btn-default.btn-xs(type='button')
               i.fa.fa-share
-              |  Share
+              |  Compartir
             button.btn.btn-default.btn-xs(type='button')
               i.fa.fa-thumbs-o-up
-              |  Like
-            span.pull-right.text-muted 127 likes - 3 comments
+              |  MeGusta
+            span.pull-right.text-muted #{megusta} MeGusta - #{comentarios} Comentarios
+          
         .box.box-widget
           .box-header.with-border
             .user-block
               img.img-circle(src='../dist/img/user1-128x128.jpg', alt='User Image')
               span.username
-                a(href='#') Luma GaTals
-              span.description Publico - HOY a las 7:30 PM
+                a(href='#') #{usuario.nombre} #{usuario.apellido}
+              span.description Publico - #{fecha.dia} a las #{fecha.hora}
             .box-tools
               button.btn.btn-box-tool(type='button', data-toggle='tooltip', title='Marcar como visto')
                 i.fa.fa-circle-o
@@ -51,17 +52,52 @@ block content
           .box-body
             .row
               .col-md-5
-                img.img-responsive.pad(src='dist/img/photo2.png', alt='Photo')
+                img.img-responsive.pad(src='dist/img/imagen03.jpg', alt='Photo')
               .col-md-7
                 h4.attachment-heading
-                  a(href='http://www.lipsum.com/') Lorem ipsum text generator
+                  a(href='#') #{tituloCancion}
                 p
-                  | I took this photo this morning. What do you guys think?khgjhgljhglkjgljgljglkjgljglglg
+                  | #{letraCancion}
             button.btn.btn-default.btn-xs(type='button')
               i.fa.fa-share
-              |  Share
+              |  Compartir
             button.btn.btn-default.btn-xs(type='button')
               i.fa.fa-thumbs-o-up
-              |  Like
-            span.pull-right.text-muted 127 likes - 3 comments
+              |  MeGusta
+            span.pull-right.text-muted #{megusta} MeGusta - #{comentarios} Comentarios
+        
+        .box.box-widget
+          .box-header.with-border
+            .user-block
+              img.img-circle(src='../dist/img/user1-128x128.jpg', alt='User Image')
+              span.username
+                a(href='#') #{usuario.nombre} #{usuario.apellido}
+              span.description Publico - #{fecha.dia} a las #{fecha.hora}
+            .box-tools
+              button.btn.btn-box-tool(type='button', data-toggle='tooltip', title='Marcar como visto')
+                i.fa.fa-circle-o
+              button.btn.btn-box-tool(type='button', data-widget='collapse')
+                i.fa.fa-minus
+              button.btn.btn-box-tool(type='button', data-widget='remove')
+                i.fa.fa-times
+          .box-body
+            .row
+              .col-md-5
+                img.img-responsive.pad(src='dist/img/imagen03.jpg', alt='Photo')
+              .col-md-7
+                h4.attachment-heading
+                  a(href='#') #{tituloCancion}
+                p
+                  | #{letraCancion}
+            button.btn.btn-default.btn-xs(type='button')
+              i.fa.fa-share
+              |  Compartir
+            button.btn.btn-default.btn-xs(type='button')
+              i.fa.fa-thumbs-o-up
+              |  MeGusta
+            span.pull-right.text-muted #{megusta} MeGusta - #{comentarios} Comentarios
+
+
+        
+        
       .col-md-2.col-xs-0
