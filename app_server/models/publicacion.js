@@ -1,26 +1,26 @@
 var mongoose = require( 'mongoose' );
 
 var UserSchema = new mongoose.Schema({
-    _id: USER_ID,
+    _id: Number,
     name: String,
     user_name: String,
     password: String
 });
 
 var CommentarySchema = new mongoose.Schema({
-    _id: COMEN_ID,
-    user: [UserSchema],
+    _id: Number,
+    user: UserSchema,
     post: String,
     date: Date
 });
 
 var GenreSchema = new mongoose.Schema({
-    _id: GENRE_ID,
+    _id: Number,
     name: String
 });
 
 var SongSchema = new mongoose.Schema({
-    _id: SONG_ID,
+    _id: Number,
     titulo: String, 
     album: String,
     autor: String,
@@ -28,8 +28,8 @@ var SongSchema = new mongoose.Schema({
 });
 
 var LyricSchema = new mongoose.Schema({
-    _id: LYRICS_ID,
-    song:[SongSchema],
-    likes: TOTAL_LIKES, 
+    _id: Number,
+    song:SongSchema,
+    likes: Number, 
     comments: [CommentarySchema]
 });
