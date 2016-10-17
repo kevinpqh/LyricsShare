@@ -1,17 +1,35 @@
 var mongoose = require( 'mongoose' );
 
-var reviewSchema = new mongoose.Schema({
-   
+var UserSchema = new mongoose.Schema({
+    _id: USER_ID,
+    name: String,
+    user_name: String,
+    password: String
 });
 
-var openingTimeSchema = new mongoose.Schema({
-
+var CommentarySchema = new mongoose.Schema({
+    _id: COMEN_ID,
+    user: [UserSchema],
+    post: String,
+    date: Date
 });
 
-var locationSchema = new mongoose.Schema({
-    
+var GenreSchema = new mongoose.Schema({
+    _id: GENRE_ID,
+    name: String
 });
 
-//mongoose.model('Publicacion', locationSchema);
+var SongSchema = new mongoose.Schema({
+    _id: SONG_ID,
+    titulo: String, 
+    album: String,
+    autor: String,
+    genres: [GenreSchema]
+});
 
-
+var LyricSchema = new mongoose.Schema({
+    _id: LYRICS_ID,
+    song:[SongSchema],
+    likes: TOTAL_LIKES, 
+    comments: [CommentarySchema]
+});
