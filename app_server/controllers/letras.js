@@ -17,7 +17,9 @@ module.exports.listaLetras = function(req, res){
      });
 };
 module.exports.MostrarLetra = function(req, res){
-    res.render('letra-detalle',{ 
+    res.render('letra-detalle',{
+    title: 'Local',
+    music:{     
         _id: 560,
         song:{
             _id: 35,
@@ -49,7 +51,7 @@ module.exports.MostrarLetra = function(req, res){
                             password: 'xxx'
                             },
                     post: 'Muy buena',
-                    date: '16 July 2013'
+                    date: '15 July 2013'
                 },{
                     _id: 3,
                     user:  {
@@ -59,8 +61,9 @@ module.exports.MostrarLetra = function(req, res){
                             password: 'xxxxxxx'
                             },
                     post: 'Unica',
-                    date: '16 July 2013'
+                    date: '14    July 2013'
                 }]
+    }
     });
 };
 module.exports.uploadLetra = function(req,res){
