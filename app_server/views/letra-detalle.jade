@@ -32,43 +32,33 @@ block content
         .col-md-12
           .box.panel.panel-default
             .box-header.panel-heading
-              h3.box-title Titulo de La cancion
+              h3.box-title=music.song.titulo
             .box-body
               table.table.table-condensed
                 tr
                   th GENERO
                   td
-                    span.badge.bg-red Salsa
+                    span.badge.bg-red= music.song.genres.name
                 tr
                   th ALBUM
                   td
-                    span.badge.bg-yellow SFSF
+                    span.badge.bg-yellow= music.song.album
                 tr
                   th INTERPRETE
                   td
-                    span.badge.bg-light-blue SDFF
-                tr
-                  th PAIS
-                  td
-                    span.badge.bg-green SDFS
+                    span.badge.bg-light-blue= music.song.autor
+
         .col-md-12
-          .box-footer.box-comments
-            .box-comment
-              img.img-circle.img-sm(src='dist/img/user3-128x128.jpg', alt='User Image')
-              .comment-text
-                span.username
-                  | Maria Gonzales
-                  span.text-muted.pull-right Hoy 8:03 PM
-                |                                         It is a long established fact that a reader will be distracted
-                |                                         by the readable content of a page when looking at its layout.
-            .box-comment
-              img.img-circle.img-sm(src='dist/img/user4-128x128.jpg', alt='User Image')
-              .comment-text
-                span.username
-                  | Luna Stark
-                  span.text-muted.pull-right Hoy 8:03 PM
-                |                                         It is a long established fact that a reader will be distracted
-                |                                         by the readable content of a page when looking at its layout.
+          each commenta in music.comments
+            .box-footer.box-comments
+              .box-comment
+                img.img-circle.img-sm(src='dist/img/user4-128x128.jpg', alt='User Image')
+                .comment-text
+                  span.username
+                    |#{commenta.user.name}
+                    span.text-muted.pull-right= commenta.date
+                  | #{commenta.post}
+                             
           .box-footer
             form(action='#', method='post')
               img.img-responsive.img-circle.img-sm(src='dist/img/user4-128x128.jpg', alt='Alt Text')
