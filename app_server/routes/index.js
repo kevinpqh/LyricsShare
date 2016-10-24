@@ -11,5 +11,4 @@ router.get('/upload',ctrlLetras.uploadLetra);
 /*Vistas para el inicio y regitro de sesion*/
 router.get('/login',ctrlUsuario.iniciarSesion);
 router.get('/registro',ctrlUsuario.registrarUsuario);
-router.post('/login',ctrlUsuario.validarUsuario);
 module.exports = router;
