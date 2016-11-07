@@ -22,18 +22,18 @@ html
           a(href='#')
             b Lyrics
             | Share
-        form(action='#', method='post')
+        form(action='', method='post',role='form')
           .form-group.has-feedback
-            input.form-control(type='text', placeholder='Full name')
+            input.form-control(type='text', placeholder='UserName',name='username')
             span.glyphicon.glyphicon-user.form-control-feedback
           .form-group.has-feedback
-            input.form-control(type='email', placeholder='Email')
+            input.form-control(type='email', placeholder='Email',name='email')
             span.glyphicon.glyphicon-envelope.form-control-feedback
           .form-group.has-feedback
-            input.form-control(type='password', placeholder='Password')
+            input.form-control(type='password', placeholder='Password',name='password')
             span.glyphicon.glyphicon-lock.form-control-feedback
           .form-group.has-feedback
-            input.form-control(type='password', placeholder='Retype password')
+            input.form-control(type='password', placeholder='Retype password',name='retypepassword')
             span.glyphicon.glyphicon-log-in.form-control-feedback
           .checkbox.form-group.has-feedback
             label
@@ -44,10 +44,11 @@ html
             button.btn.btn-success.btn-block(type='submit') Registrar
         .social-auth-links.text-center
           p - OR -
-          a.btn.btn-block.btn-social.btn-facebook.btn-flat(href='#')
+          fb:login-button#facebook-login-button(appid='335608400131718', scope='public_profile,email')
             i.fa.fa-facebook
             |  Iniciar Usando Facebook
         a.text-center(href='login.html') Tengo Una Cuenta
     script(src='plugins/jQuery/jquery-2.2.3.min.js')
     // Bootstrap 3.3.6
     script(src='bootstrap/js/bootstrap.min.js')
+    script(src='Facebook/js/facebookSDK.js')

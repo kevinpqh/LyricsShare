@@ -1,25 +1,20 @@
 var mongoose = require( 'mongoose' );
 
 var CommentarySchema = new mongoose.Schema({
-    user_name: String,
-    post: String,
-    date: Date,
+    user_name: { type: String, required: true },
+    post: { type: String, required: true },
+    date: { type: Date,"default":Date.now  },
     hora: String //hora en 12 horas
 });
 
-//Genero de Musica
-var GenreSchema = new mongoose.Schema({
-    name: String
-});
-
 var SongSchema = new mongoose.Schema({
-    titulo: String,
-    genres: [GenreSchema],
+    titulo: { type: String, required: true },
+    genres: [String],//Genero de Music
     album: String,
-    autor: String,
-    lyrics: String,
+    autor: { type: String, required: true },
+    lyrics: { type: String, required: true },
     track: String, // cancion mp3
-    image: String //El Binary no funciona 
+    image: { type: String, required: true } //El Binary no funciona
 });
 
 
@@ -27,22 +22,10 @@ var SongSchema = new mongoose.Schema({
 var PublishSchema = new mongoose.Schema({
     song: SongSchema,
     likes: Number,
-    date: Date,
-    comments: [CommentarySchema]
+    date: { type: Date,"default":Date.now  },
+    comments: [CommentarySchema],
+    user_name: String
 });
 
-var FavoriteSchema = new mongoose.Schema({
-    user_name:String,
-    favorites: [PublishSchema]
-});
-
-var UserSchema = new mongoose.Schema({
-    name: String, // no requerido para el registro
-    user_name: { type: String, required: true, index: { unique: true } },
-    email: { type: String, required: true },
-    password: { type: String, required: true },
-    publish:[PublishSchema],
-    favorites:[FavoriteSchema]
-});
-
-mongoose.model('Usuario', UserSchema);
+//mongoose.model('Favoritos', FavoriteSchema);
+mongoose.model('Publicacion', PublishSchema);

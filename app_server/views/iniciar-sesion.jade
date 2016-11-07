@@ -21,7 +21,7 @@ html
           a(href='#')
             b Lyrics
             | Share
-        form(action='/login', method='post')
+        form(action='', method='post',,role='form')
           .form-group.has-feedback
             input.form-control(name='username', placeholder='Email o Username')
             span.glyphicon.glyphicon-user.form-control-feedback
@@ -36,12 +36,13 @@ html
             button.btn.btn-success.btn-block(type='submit') Iniciar
         .social-auth-links.text-center
           p - OR -
-          a.btn.btn-block.btn-social.btn-facebook(href='#')
+          fb:login-button#facebook-login-button(appid='335608400131718', scope='public_profile,email')
             i.fa.fa-facebook
-            |  Ingrese Usando Facebook
+            |  Iniciar Usando Facebook
         a(href='#') Olvide mi Contraseña
         br
         a.text-center(href='#') Nuevo Usuario
     script(src='plugins/jQuery/jquery-2.2.3.min.js')
     // Bootstrap 3.3.6
     script(src='bootstrap/js/bootstrap.min.js')
+    script(src='Facebook/js/facebookSDK.js')

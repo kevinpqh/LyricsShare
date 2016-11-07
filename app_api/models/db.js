@@ -1,8 +1,12 @@
 var mongoose = require( 'mongoose' );
 
 require('./publicacion');
+require('./usuario');
 
 var dbURI = 'mongodb://localhost/LyricsShare';
+if (process.env.NODE_ENV === 'production') {
+  dbURI = process.env.MONGOLAB_URI;
+}
 mongoose.connect(dbURI);
 
 mongoose.connection.on('connected', function () {
