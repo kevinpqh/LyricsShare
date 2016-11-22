@@ -4,7 +4,7 @@ var CommentarySchema = new mongoose.Schema({
     user_name: { type: String, required: true },
     post: { type: String, required: true },
     date: { type: Date,"default":Date.now  },
-    hora: String //hora en 12 horas
+    //hora: String //hora en 12 horas
 });
 
 var SongSchema = new mongoose.Schema({
@@ -21,11 +21,12 @@ var SongSchema = new mongoose.Schema({
 //Publicacion de un usuario
 var PublishSchema = new mongoose.Schema({
     song: SongSchema,
-    likes: Number,
+    likes: {type: Number,"default":0  },
     date: { type: Date,"default":Date.now  },
     comments: [CommentarySchema],
     user_name: String
 });
 
 //mongoose.model('Favoritos', FavoriteSchema);
-mongoose.model('Publicacion', PublishSchema);
+module.exports.modelpublish = mongoose.model('Publicacion', PublishSchema);
+module.exports.Publish = PublishSchema;

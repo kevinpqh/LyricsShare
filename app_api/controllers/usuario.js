@@ -9,7 +9,22 @@ var sendJsonResponse = function(res, status, content) {
 
 //GET POST DELETE Y PUT de usuario
 module.exports.UserListById = function(req, res){//obtenemos la lista de ususrios
-    sendJsonResponse(res, 200, {"status" : "success"});
+    if(req.params && req.params.userid){
+        Loc
+            .findById(req.params.userid)
+            .exec(function(err,usuario){
+                if(!usuario){
+                    sendJsonResponse(res, 404, {"message": "userid no encontrado"});
+                    return;
+                }else if (err){
+                    sendJsonResponse(res, 404, {"message": "userid error no encontrado"});
+                    return;
+                }
+                sendJsonResponse(res,200,usuario);
+            });
+    }else {
+        sendJsonResponse(res, 404, {"message": "no userid en request"});
+    }
 };
 module.exports.UserCreate = function(req, res){//creaar ususrios
     console.log(req.body.name);
@@ -29,23 +44,28 @@ module.exports.UserCreate = function(req, res){//creaar ususrios
     });    
 };
 module.exports.UserReadOne = function(req, res){//motrar un ususrios en especifico
-    if(req.params && req.params.userid){
-        Loc
-            .findById(req.params.userid)
-            .exec(function(err,usuario){
-                if(!usuario){
-                    sendJsonResponse(res, 404, {"message": "userid no encontrado"});
-                    return;
-                }else if (err){
-                    sendJsonResponse(res, 404, {"message": "userid error no encontrado"});
-                    return;
-                }
-                sendJsonResponse(res,200,usuario);
-            });
-    }else {
-        sendJsonResponse(res, 404, {"message": "no userid en request"});
+    var user = req.query.user;
+    var pass = req.query.pass;
+
+    if (!user || !pass) {
+        console.log('UserReadOne no tiene parametros');
+        sendJsonResponse(res, 404, {
+            "message": "user y pass son parametros requidos"
+        });
+        return;
     }
-    
+    Loc
+        .findOne({user_name: user, password: pass})
+        .exec(function(err,usuario){
+            if(!usuario){
+                sendJsonResponse(res, 404, {"message": "userid no encontrado"});
+                return;
+            }else if (err){
+                sendJsonResponse(res, 404, {"message": "userid error no encontrado"});
+                return;
+            }
+            sendJsonResponse(res,200,usuario);
+        });
 };
 module.exports.UserUpdateOne = function(req, res){// actualizar un ususrios en especifico
     if (!req.params.userid) {

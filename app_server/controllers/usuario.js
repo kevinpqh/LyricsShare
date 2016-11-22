@@ -35,20 +35,25 @@ module.exports.iniciarSesion = function(req, res){
 };
 module.exports.doIniciarSesion = function (req, res){
     var requestOptions, path;
-    path = "/api/user/" + req.body.username;
-    console.log(req.body.username);
+    path = "/api/user/login/";
+    var username = req.body.username;
+    var password = req.body.password;
     requestOptions = {
         url : apiOptions.server + path,
         method : "GET",
-        json : {}
+        json : {},
+        qs : {
+            user : username,
+            pass : password
+        }
     };
     request(
         requestOptions,
         function(err, response, body) {
             var data = body;
             if (response.statusCode === 200) {
-                //res.redirect('/');
-                console.log(body);
+                res.redirect('/');
+                //console.log(body);
             } else {
                 _showError(req, res, response.statusCode);
             }
