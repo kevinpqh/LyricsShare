@@ -1,18 +1,20 @@
 extends layout
 
+include _includes/sharedHTMLfunctions
+
 block content
   .row
       .col-md-8
         .row
           .col-md-12
-            img.img-responsive.pad.no-padding(src='dist/img/photo2.png', alt='Photo')
+            img.img-responsive.pad.no-padding(src='/dist/img/photo2.png', alt='Photo')
           .col-md-12
             .box.box-success
               .box-body
                 .user-block
-                  img.img-circle(src='../dist/img/user1-128x128.jpg', alt='User Image')
+                  img.img-circle(src='/../dist/img/user1-128x128.jpg', alt='User Image')
                   span.username
-                    a(href='#') Luis Yanque
+                    a(href='#')= publish.user_name
                   span.description Publico - HOY a las 7:30 PM
                 ul.list-inline
                   li
@@ -32,39 +34,46 @@ block content
         .col-md-12
           .box.panel.panel-default
             .box-header.panel-heading
-              h3.box-title=music.song.titulo
+              h3.box-title= song.titulo
             .box-body
               table.table.table-condensed
                 tr
                   th GENERO
                   td
-                    span.badge.bg-red= music.song.genres.name
+                    span.badge.bg-red= song.genres
                 tr
                   th ALBUM
                   td
-                    span.badge.bg-yellow= music.song.album
+                    span.badge.bg-yellow= song.album
                 tr
                   th INTERPRETE
                   td
-                    span.badge.bg-light-blue= music.song.autor
+                    span.badge.bg-light-blue= song.autor
 
         .col-md-12
-          each commenta in music.comments
+          each commenta in publish.comments
             .box-footer.box-comments
               .box-comment
-                img.img-circle.img-sm(src='dist/img/user4-128x128.jpg', alt='User Image')
+                img.img-circle.img-sm(src='/dist/img/user4-128x128.jpg', alt='User Image')
                 .comment-text
                   span.username
-                    |#{commenta.user.name}
-                    span.text-muted.pull-right= commenta.date
+                    |#{commenta.user_name}
+                    span.text-muted.pull-right
+                      +formatDate(commenta.date)
                   | #{commenta.post}
-                             
-          .box-footer
-            form(action='#', method='post')
-              img.img-responsive.img-circle.img-sm(src='dist/img/user4-128x128.jpg', alt='Alt Text')
-              .img-push
-                input.form-control.input-sm(type='text', placeholder='Press enter to post comment')
+                  button.btn.btn-box-tool.pull-right(type='button', data-widget='remove')
+                    i.fa.fa-edit
+                  button.btn.btn-box-tool.pull-right(type='button', data-widget='remove')
+                    i.fa.fa-remove
 
+
+          .box-footer
+            form(action='/detalle/583854a6f2803812ed56c5ca/comment', method='post', role='form')
+              img.img-responsive.img-circle.img-sm(src='/dist/img/user4-128x128.jpg', alt='Alt Text')
+              .img-push
+                input.form-control.input-sm(type='text', name="user_name"  ,placeholder='Press enter to user save' )
+                input.form-control.input-sm(type='text', name="post", placeholder='Press enter to post comment')
+              button.btn.btn-default(type='submit', value='enviar')
 //todo
 //  quitar PAIS
 //  poner dinamico

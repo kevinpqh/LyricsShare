@@ -61,7 +61,7 @@ module.exports.CommentCreate = function(req,res){
   publishid= req.params.publishid;
   path = "/api/publish/" + publishid + '/comment';
   postdata = {
-     user_name: req.body.username,
+     user_name: req.body.user_name,
      post: req.body.post
  };
  //retype_pass= req.body.retypepassword;
@@ -105,17 +105,16 @@ module.exports.CommentUpdateOne = function(req,res){
   postdata = {
     user_name: req.body.username,
     post: req.body.post,
-    date: req.body.date,
-    hora: req.body.hora
+    date: req.body.date
 };
- retype_pass= req.body.retypepassword;
+
 
  requestOptions = {
      url : apiOptions.server + path,
      method : "PUT",
      json : postdata
  };
- if (!postdata.user_name || !postdata.post ) {
+ if (!postdata.post ) {
        res.redirect('/publish/' + publishid + '/comment/commentid?err=val');
  }
  else{

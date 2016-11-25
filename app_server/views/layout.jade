@@ -6,15 +6,15 @@ html
     title LyricsShare
     meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
     // bootstrap
-    link(rel='stylesheet', href='bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
     // Font Awesome
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')
     // Ionicons
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css')
     // Theme style
-    link(rel='stylesheet', href='dist/css/AdminLTE.min.css')
+    link(rel='stylesheet', href='/dist/css/AdminLTE.min.css')
     // color pantalla
-    link(rel='stylesheet', href='dist/css/skins/skin-green.min.css')
+    link(rel='stylesheet', href='/dist/css/skins/skin-green.min.css')
     //mi estilo
     link(rel='stylesheet', href='/stylesheets/style.css')
 
@@ -55,7 +55,7 @@ html
                         // INICIO DE MENSAJE
                         a(href='#')
                           .pull-left
-                            img.img-circle(src='dist/img/user2-160x160.jpg', alt='User Image')
+                            img.img-circle(src='/dist/img/user2-160x160.jpg', alt='User Image')
                           h4
                             | Support Team
                             small
@@ -67,7 +67,7 @@ html
                         // ESTO ES UNA REPETICION
                         a(href='#')
                           .pull-left
-                            img.img-circle(src='dist/img/user2-160x160.jpg', alt='User Image')
+                            img.img-circle(src='/dist/img/user2-160x160.jpg', alt='User Image')
                           h4
                             | Support Team
                             small
@@ -94,13 +94,13 @@ html
                     a(href='#') Ver Todo
               li.dropdown.user.user-menu
                 a.dropdown-toggle(href='#', data-toggle='dropdown')
-                  img.user-image(src='dist/img/user7-128x128.jpg', alt='user image')
+                  img.user-image(src='/dist/img/user7-128x128.jpg', alt='user image')
                   span.hidden-xs
                     | Kevin Quispe 
                     span.caret
                 ul.dropdown-menu
                   li.user-header
-                    img.img-circle(src='dist/img/user2-160x160.jpg', alt='User Image')
+                    img.img-circle(src='/dist/img/user2-160x160.jpg', alt='User Image')
                     p
                       | Kevin Quispe
                       small Miembro desde Jun. 2016
@@ -132,24 +132,24 @@ html
       aside.main-sidebar
       .content-wrapper
         section.content
-        
+
           block content
-          
+
       footer.main-footer
         // To the right
         .pull-right.hidden-xs
           | Anything you want
         // Default to the left
         strong
-          | Copyright © 2016 
+          | Copyright © 2016
           a(href='#') Company
           | .
         |  All rights reserved.
     // jQuery 2.2.3
-    script(src='plugins/jQuery/jquery-2.2.3.min.js')
+    script(src='/plugins/jQuery/jquery-2.2.3.min.js')
     // Bootstrap 3.3.6
-    script(src='bootstrap/js/bootstrap.min.js')
+    script(src='/bootstrap/js/bootstrap.min.js')
     // AdminLTE App
     script.
       $("body").addClass('sidebar-collapse').trigger('collapsed.pushMenu');
-    script(src='dist/js/app.min.js')
+    script(src='/dist/js/app.min.js')

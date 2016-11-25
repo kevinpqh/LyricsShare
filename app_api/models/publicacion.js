@@ -24,7 +24,7 @@ var PublishSchema = new mongoose.Schema({
     likes: {type: Number,"default":0  },
     date: { type: Date,"default":Date.now  },
     comments: [CommentarySchema],
-    user_name: String
+    user_name: { type: String, required: true }
 });
 
 //mongoose.model('Favoritos', FavoriteSchema);
