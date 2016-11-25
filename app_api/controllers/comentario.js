@@ -25,22 +25,7 @@ module.exports.CommentListById = function(req, res){//obtenemos la lista de usus
         sendJsonResponse(res, 404, {"message": "no userid en request"});
     }
 };
-/*module.exports.CommentCreate = function(req, res){//creaar ususrios
-    console.log(req.body.post);
-    Loc.create({
-        user_name : req.body.user_name,
-        post: req.body.post   
-        
-    }, function(err,comentario){
-        if(err){
-            console.log(err);
-            sendJsonResponse(res,400,err);
-        }else {
-            console.log(comentario);
-            sendJsonResponse(res,201,comentario);
-        }
-    });    
-};*/
+
 module.exports.CommentCreate = function(req, res){//crear un comenetario
     console.log('Bien');
     if (req.params.publishid) {
@@ -66,7 +51,7 @@ module.exports.CommentCreate = function(req, res){//crear un comenetario
 
 var doAddComment = function(req, res, publish) {
   if (!publish) {
-    sendJsonResponse(res, 404, "locationid not found");
+    sendJsonResponse(res, 404, "publishid not found");
   } else {
     publish.comments.push({
         user_name : req.body.user_name,
@@ -86,52 +71,152 @@ var doAddComment = function(req, res, publish) {
 };
 
 
-
-
-module.exports.CommentUpdateOne = function(req, res){// actualizar un ususrios en especifico
-    if (!req.params.commentid) {
-        sendJsonResponse(res, 404, {"message": "Not found, userid is required"});
-        return;
-    }
+module.exports.CommentReadOne = function(req, res) {
+  //console.log("Getting single review");
+  if (req.params && req.params.publishid && req.params.commentid) {
     Loc
-        .findById(req.params.commentid)
-        .select('-favorites -publish')
-        .exec(
-            function(err,comentario){
-                if (!comentario) {
-                    sendJsonResponse(res, 404, {"message": "userid not found"});
-                    return;
-                } else if (err){
-                    sendJsonResponse(res, 400, err);
-                    return;
-                }
-                comentario.post = req.body.post;
-                
-                    if (err) {
-                        sendJsonResponse(res, 404, err);
-                    } else {
-                        sendJsonResponse(res, 200, comentario);
-                    }
-                });
+      .findById(req.params.publishid)
+      .select(' comments')
+      .exec(
+        function(err, publish) {
+          console.log(publish);
+          var response, comment;
+          if (!publish) {
+            sendJsonResponse(res, 404, {
+              "message": "locationid not found"
+            });
+            return;
+          } else if (err) {
+            sendJsonResponse(res, 400, err);
+            return;
+          }
+          if (publish.comments && publish.comments.length > 0) {
+            comment = publish.comments.id(req.params.commentid);
+            if (!comment) {
+              sendJsonResponse(res, 404, {
+                "message": "reviewid not found"
+              });
+            } else {
+              response = {
+
+                comment: comment
+              };
+              sendJsonResponse(res, 200, response);
+            }
+          } else {
+            sendJsonResponse(res, 404, {
+              "message": "No reviews found"
+            });
+          }
+        }
+    );
+  } else {
+    sendJsonResponse(res, 404, {
+      "message": "Not found, locationid and reviewid are both required"
+    });
+  }
 };
-module.exports.CommentDeleteOne = function(req, res){ //deliminar  un ususrios en especifico
-    var commentid = req.params.commentid;
-    console.log(commentid);
-    if (commentid) {
-        Loc
-            .findByIdAndRemove(commentid)
-            .exec(
-                function(err,comentario){
-                    if (err){
-                        console.log(err);
-                        sendJsonResponse(res,404,err);
-                        return;
-                    }
-                    console.log("comentario id "+commentid + "deleted");
-                    sendJsonResponse(res,204,null);
-                }
-            );
-    } else {
-        sendJsonResponse(res,404,{"message":"no commentid"});
+
+
+
+module.exports.CommentUpdateOne = function(req, res){// actualizar un comentario en especifico
+  if (!req.params.publishid || !req.params.commentid) {
+  sendJsonResponse(res, 404, {
+    "message": "Not found, locationid and reviewid are both required"
+  });
+  return;
+}
+Loc
+  .findById(req.params.publishid)
+  .select('comments')
+  .exec(
+    function(err, publish) {
+      var thisComment;
+      if (!publish) {
+        sendJsonResponse(res, 404, {
+          "message": "locationid not found"
+        });
+        return;
+      } else if (err) {
+        sendJsonResponse(res, 400, err);
+        return;
+      }
+      if (publish.comments && publish.comments.length > 0) {
+        thisComment = publish.comments.id(req.params.commentid);
+        if (!thisComment) {
+          sendJsonResponse(res, 404, {
+            "message": "reviewid not found"
+          });
+        } else {
+          thisComment.user_name = req.body.user_name;
+          thisComment.post = req.body.post;
+
+          publish.save(function(err, publish) {
+            if (err) {
+              sendJsonResponse(res, 404, err);
+            } else {
+            //  updateAverageRating(location._id);
+              sendJsonResponse(res, 200, thisComment);
+            }
+          });
+        }
+      } else {
+        sendJsonResponse(res, 404, {
+          "message": "No review to update"
+        });
+      }
     }
+);
+};
+
+module.exports.CommentDeleteOne = function(req, res){ //deliminar  un ususrios en especifico
+  if (!req.params.publishid || !req.params.commentid) {
+    sendJsonResponse(res, 404, {
+      "message": "Not found, locationid and reviewid are both required"
+    });
+    return;
+  }
+  Loc
+    .findById(req.params.publishid)
+    .select('comments')
+    .exec(
+      function(err, publish) {
+        if (!publish) {
+          sendJsonResponse(res, 404, {
+            "message": "locationid not found"
+          });
+          return;
+        } else if (err) {
+          sendJsonResponse(res, 400, err);
+          return;
+        }
+        if (publish.comments && publish.comments.length > 0) {
+          if (!publish.comments.id(req.params.commentid)) {
+              sendJsonResponse(res, 404, {
+              "message": "comment not found"
+            });
+          } else {
+            console.log("eliminado");
+            publish.comments.id(req.params.commentid).remove();
+            //sendJsonResponse(res, 204, {"success": "Eliminado"});
+           publish.save(function(err) {
+              if (err) {
+              console.log("eliminao erro");
+                sendJsonResponse(res, 404, err);
+              } else {
+                console.log("eliminao happy");
+                sendJsonResponse(res, 204, null);
+              }
+              console.log("eliminao");
+            });
+
+
+          }
+        } else {
+          sendJsonResponse(res, 404, {
+            "message": "No review to delete"
+          });
+        }
+      }
+  );
 };
