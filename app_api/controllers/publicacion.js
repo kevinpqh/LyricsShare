@@ -7,7 +7,20 @@ var sendJsonResponse = function(res, status, content) {
 };
 
 module.exports.PublishListById = function(req,res){
-
+    Loc
+        .find({})
+        .exec(function(err, location) {
+            if (!location) {
+                sendJsonResponse(res, 404, {
+                    "message": "locationid not found"}
+                    );
+                return;
+            } else if (err) {
+                sendJsonResponse(res, 404, err);
+                return;
+            }
+            sendJsonResponse(res, 200, location);
+        });
 }
 
 
@@ -16,6 +29,7 @@ module.exports.PublishReadOne = function(req, res) {
         Loc
             .findById(req.params.publishid)
             .exec(function(err, location) {
+                console.log("where is");
                 if (!location) {
                     sendJsonResponse(res, 404, {
                         "message": "locationid not found"}
@@ -82,9 +96,17 @@ module.exports.PublishUpdateOne = function(req, res) {
                     return;
                 }
                 publish.likes = req.body.likes;
-                publish.date = req.body.date;
                 publish.user_name = req.body.user_name;
-                
+                publish.song = {
+                                titulo: req.body.titulo,
+                                genres: req.body.genres.split(","),//Genero de Music
+                                album: req.body.album,
+                                autor: req.body.autor,
+                                lyrics: req.body.lyrics,
+                                track: req.body.track, // cancion mp3
+                                image: req.body.image //El Binary no funciona
+                                }
+
                 publish.save(function(err, publish) {
                     if (err) {
                         sendJsonResponse(res, 404, err);
