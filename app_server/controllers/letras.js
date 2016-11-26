@@ -87,11 +87,11 @@ module.exports.listaLetras = function(req, res){
 /*module.exports.MostrarLetra = function(req, res){
     res.render('letra-detalle',{
     title: 'Local',
-    music:{
+    music:{     
         _id: 560,
         song:{
             _id: 35,
-            titulo: 'Amor de verano',
+            titulo: 'Amor de verano', 
             album: 'Airbag',
             autor: 'Airbag',
             genres:{
@@ -99,7 +99,7 @@ module.exports.listaLetras = function(req, res){
                 name: 'Rock'
                 }
             },
-        likes: 10,
+        likes: 10, 
         comments: [{
                     _id: 1,
                     user: {

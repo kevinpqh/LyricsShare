@@ -4,100 +4,35 @@ block content
   .row
       .col-md-2.col-xs-0
       .col-md-8.col-xs-12
-        .box.box-widget
-          .box-header.with-border
-            .user-block
-              img.img-circle(src='../dist/img/user1-128x128.jpg', alt='User Image')
-              span.username
-                a(href='#') #{usuario.nombre} #{usuario.apellido}
-              span.description Publico - #{fecha.dia} a las #{fecha.hora}
-            .box-tools
-              button.btn.btn-box-tool(type='button', data-toggle='tooltip', title='Marcar como visto')
-                i.fa.fa-circle-o
-              button.btn.btn-box-tool(type='button', data-widget='collapse')
-                i.fa.fa-minus
-              button.btn.btn-box-tool(type='button', data-widget='remove')
-                i.fa.fa-times
-          .box-body
-            .row
-              .col-md-5
-                img.img-responsive.pad(src='dist/img/imagen03.jpg', alt='Photo')
-              .col-md-7
-                h4.attachment-heading
-                  a(href='#') #{tituloCancion}
-                p
-                  | #{letraCancion}
-            button.btn.btn-default.btn-xs(type='button')
-              i.fa.fa-share
-              |  Compartir
-            button.btn.btn-default.btn-xs(type='button')
-              i.fa.fa-thumbs-o-up
-              |  MeGusta
-            span.pull-right.text-muted #{megusta} MeGusta - #{comentarios} Comentarios
-          
-        .box.box-widget
-          .box-header.with-border
-            .user-block
-              img.img-circle(src='../dist/img/user1-128x128.jpg', alt='User Image')
-              span.username
-                a(href='#') #{usuario.nombre} #{usuario.apellido}
-              span.description Publico - #{fecha.dia} a las #{fecha.hora}
-            .box-tools
-              button.btn.btn-box-tool(type='button', data-toggle='tooltip', title='Marcar como visto')
-                i.fa.fa-circle-o
-              button.btn.btn-box-tool(type='button', data-widget='collapse')
-                i.fa.fa-minus
-              button.btn.btn-box-tool(type='button', data-widget='remove')
-                i.fa.fa-times
-          .box-body
-            .row
-              .col-md-5
-                img.img-responsive.pad(src='dist/img/imagen03.jpg', alt='Photo')
-              .col-md-7
-                h4.attachment-heading
-                  a(href='#') #{tituloCancion}
-                p
-                  | #{letraCancion}
-            button.btn.btn-default.btn-xs(type='button')
-              i.fa.fa-share
-              |  Compartir
-            button.btn.btn-default.btn-xs(type='button')
-              i.fa.fa-thumbs-o-up
-              |  MeGusta
-            span.pull-right.text-muted #{megusta} MeGusta - #{comentarios} Comentarios
-        
-        .box.box-widget
-          .box-header.with-border
-            .user-block
-              img.img-circle(src='../dist/img/user1-128x128.jpg', alt='User Image')
-              span.username
-                a(href='#') #{usuario.nombre} #{usuario.apellido}
-              span.description Publico - #{fecha.dia} a las #{fecha.hora}
-            .box-tools
-              button.btn.btn-box-tool(type='button', data-toggle='tooltip', title='Marcar como visto')
-                i.fa.fa-circle-o
-              button.btn.btn-box-tool(type='button', data-widget='collapse')
-                i.fa.fa-minus
-              button.btn.btn-box-tool(type='button', data-widget='remove')
-                i.fa.fa-times
-          .box-body
-            .row
-              .col-md-5
-                img.img-responsive.pad(src='dist/img/imagen03.jpg', alt='Photo')
-              .col-md-7
-                h4.attachment-heading
-                  a(href='#') #{tituloCancion}
-                p
-                  | #{letraCancion}
-            button.btn.btn-default.btn-xs(type='button')
-              i.fa.fa-share
-              |  Compartir
-            button.btn.btn-default.btn-xs(type='button')
-              i.fa.fa-thumbs-o-up
-              |  MeGusta
-            span.pull-right.text-muted #{megusta} MeGusta - #{comentarios} Comentarios
-
-
-        
-        
+        each publish in allpublish
+          .box.box-widget
+            .box-header.with-border
+              .user-block
+                img.img-circle(src='../dist/img/user1-128x128.jpg', alt='User Image')
+                span.username
+                  a(href='#') #{publish.user_name}
+                span.description Publico - #{publish.date} a las #{publish.date.hour}
+              .box-tools
+                button.btn.btn-box-tool(type='button', data-toggle='tooltip', title='Marcar como visto')
+                  i.fa.fa-circle-o
+                button.btn.btn-box-tool(type='button', data-widget='collapse')
+                  i.fa.fa-minus
+                button.btn.btn-box-tool(type='button', data-widget='remove')
+                  i.fa.fa-times
+            .box-body
+              .row
+                .col-md-5
+                  img.img-responsive.pad(src='dist/img/imagen03.jpg', alt='Photo')
+                .col-md-7
+                  h4.attachment-heading
+                    a(href='#') #{publish.song.titulo}
+                  p
+                    | #{publish.song.lyrics}
+              button.btn.btn-default.btn-xs(type='button')
+                i.fa.fa-share
+                |  Compartir
+              button.btn.btn-default.btn-xs(type='button')
+                i.fa.fa-thumbs-o-up
+                |  MeGusta
+              span.pull-right.text-muted #{publish.likes} MeGusta - #{publish.comments} Comentarios
       .col-md-2.col-xs-0

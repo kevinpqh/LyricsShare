@@ -8,32 +8,27 @@ block content
           .box-header.with-border
             h3.box-title Subir Letra
           // form Inicio
-          form.form-horizontal
-            .box-body
-              .form-group.has-success
-                label.col-sm-2.control-label(for='Titulo') Titulo
-                .col-sm-10
-                  input#Titulo.form-control(type='email', placeholder='Titulo')
-              .form-group.has-success
-                label.col-sm-2.control-label(for='Genero') Genero
-                .col-sm-10
-                  input#Genero.form-control(type='text', placeholder='Genero')
-              .form-group.has-success
-                label.col-sm-2.control-label(for='Cancion') Cancion
-                .col-sm-10
-                  input#Cancion(type='file')
-                  p.help-block Example block-level help text here.
-              .form-group.has-success
-                label.col-sm-2.control-label(for='textArea') Letra
-                .col-sm-10
-                  textarea#textArea.form-control(placeholder='Enter ...')
-              .form-group
-                .col-sm-offset-2.col-sm-10
-                  .checkbox
-                    label
-                      input(type='checkbox')
-                      |  Remember me
-            .box-footer
-              button.btn.btn-default(type='submit') Cancelar
-              button.btn.btn-success.pull-right(type='submit') Aceptar
+          form(action='', method='post',role='form')
+            .form-group.has-feedback
+              input.form-control(type='text', placeholder='UserName',name='user_name')
+              span.glyphicon.glyphicon-user.form-control-feedback
+            .form-group.has-feedback
+              input.form-control(type='text', placeholder='titulo',name='titulo')
+              span.glyphicon.glyphicon-envelope.form-control-feedback
+            .form-group.has-feedback
+              input.form-control(type='text', placeholder='generos',name='genres')
+              span.glyphicon.glyphicon-lock.form-control-feedback
+            .form-group.has-feedback
+              input.form-control(type='text', placeholder='album',name='album')
+            .form-group.has-feedback
+              input.form-control(type='text', placeholder='autor',name='autor')
+            .form-group.has-feedback
+              input.form-control(type='text', placeholder='lyrics',name='lyrics')
+            .form-group.has-feedback
+              input.form-control(type='text', placeholder='track',name='track')
+            .form-group.has-feedback
+              input.form-control(type='text', placeholder='image',name='image')
+              span.glyphicon.glyphicon-log-in.form-control-feedback
+            .form-group.has-feedback
+            button.btn.btn-success(type='submit') Registrar
       .col-md-2

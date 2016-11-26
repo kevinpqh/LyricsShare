@@ -53,7 +53,7 @@ module.exports.PublishCreate = function(req, res) {
     Loc.create({
         song:{
             titulo: req.body.titulo,
-            genres: req.body.genres.split(","),//Genero de Music
+            genres: req.body.genres,//Genero de Music
             album: req.body.album,
             autor: req.body.autor,
             lyrics: req.body.lyrics,
