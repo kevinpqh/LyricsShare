@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+
+//var ctrlPubli = require('../controllers/publicacion');
 var ctrlLetras = require('../controllers/letras');
 var ctrlUsuario = require('../controllers/usuario');
 var ctrlComentario = require('../controllers/comentario');
@@ -8,6 +10,7 @@ router.get('/',ctrlLetras.listaLetras );
 router.get('/detalle/:publishid',ctrlLetras.MostrarLetra);
 //router.get('/detalle/:publishid/comment',ctrlLetras.CrearComentario);
 router.get('/upload',ctrlLetras.uploadLetra);
+router.post('/upload',ctrlLetras.createPublish);
 
 router.post('/detalle/:publishid/comment',ctrlComentario.CommentCreate);
 

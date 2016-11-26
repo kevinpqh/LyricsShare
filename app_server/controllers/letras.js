@@ -67,23 +67,75 @@ module.exports.MostrarLetra = function(req, res){
 };
 
 
-module.exports.listaLetras = function(req, res){
-    res.render('index',{
-        title: 'lyricsShare',
-        usuario:{
-            nombre: 'Luis',
-            apellido: 'Yanque'
-        },
-        fecha: {
-            dia: 'Hoy',
-            hora: '7:30 AM'
-        },
-        tituloCancion: 'DUELE EL CORAZON',
-        letraCancion: 'Si te vas yo también me voy Si me das yo también te doy Mi amor Bailamos hasta las diez Hasta que duelan los pies',
-        megusta: 5,
-        comentarios: 8
-     });
+/**PARA LISTAR TODAS LAS PUBLICACIONES */
+var renderHomepage = function(req, res, responseBody){
+    res.render('index', {
+        title: 'LyricsShare',
+        allpublish: responseBody
+    });
 };
+
+module.exports.listaLetras = function(req, res){
+    var requestOptions, path;
+    path = '/api/publish';
+    requestOptions = {
+        url : apiOptions.server + path,
+        method : "GET",
+        json : {}
+    };
+    request(requestOptions,function(err, response, body) {
+        renderHomepage(req, res, body);
+        }
+    );
+};
+/**FIN PARA LISTAR LAS PUBLICACIONES */
+
+
+/**PARA CREAR UN PUBLICACION */
+var renderCreatePublish = function(req, res, responseBody){
+    console.log(responseBody);
+    console.log("letra detalblea");
+    res.render('letra-detalle', {
+            title:responseBody.song.titulo,
+            song: responseBody.song,
+            publish:responseBody
+    });
+};
+
+var renderHomepage = function(req, res, responseBody){
+    res.render('index', {
+        allpublish: responseBody
+    });
+};
+
+
+module.exports.createPublish = function(req, res){
+    var requestOptions, path;
+    path = '/api/publish';
+    requestOptions = {
+        url : apiOptions.server + path,
+        method : "POST",
+        json : {
+                user_name: req.body.user_name,
+                titulo: req.body.titulo,
+                genres: req.body.genres.split(","),
+                album: req.body.album,
+                autor: req.body.autor,
+                lyrics: req.body.lyrics,
+                track: req.body.track,
+                image: req.body.image
+                }
+    };
+    
+    request(requestOptions,function(err, response, body) {
+        console.log("entroooooooo");
+        renderCreatePublish(req, res, body);
+        }
+    );
+};
+/**FIN PARA CREAR PUBLICACION */
+
+
 /*module.exports.MostrarLetra = function(req, res){
     res.render('letra-detalle',{
     title: 'Local',

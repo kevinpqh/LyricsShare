@@ -80,7 +80,8 @@ module.exports.CommentCreate = function(req,res){
          function(err, response, body) {
              if (response.statusCode === 201) {
                    console.log("comentario realizado");
-                 //res.redirect('/');
+                   var ruta = '/detalle/' + publishid;
+                   res.redirect(ruta);
              } else if (response.statusCode === 400 && body.user_name && body.post === "ValidationError" ) {
                  res.redirect('/registro?err=val');
              } else {
