@@ -1,24 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var ctrlPubli = require('../controllers/publicacion');
+var ctrlLetras = require('../controllers/letras');
+var ctrlComentario = require('../controllers/comentario');
 var ctrlUsuario = require('../controllers/usuario');
 
-/* GET home page. */
-router.get('/',ctrlLetras.listaLetras );
-router.get('/detalle/:publishid',ctrlLetras.MostrarLetra);
-//router.get('/detalle/:publishid/comment',ctrlLetras.CrearComentario);
-router.get('/upload',ctrlLetras.uploadLetra);
-=======
 router.get('/',ctrlPubli.home );
-//router.get('/detalle',ctrlPubli.MostrarLetra);
+router.get('/detalle/:publishid',ctrlLetras.MostrarLetra);
 router.get('/upload',ctrlPubli.uploadPublish);
 router.post('/upload',ctrlPubli.createPublish);
->>>>>>> 82908067581204187eb7f0c399bc163dc1741f38
-
 router.post('/detalle/:publishid/comment',ctrlComentario.CommentCreate);
-
-
-
 
 /*Vistas para el inicio y regitro de sesion*/
 router.get('/login',ctrlUsuario.iniciarSesion);

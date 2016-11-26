@@ -6,7 +6,13 @@ if (process.env.NODE_ENV === 'production') {
     apiOptions.server = "https://lyricsshare.herokuapp.com";
 }
 var renderCreatePublish = function(req, res, responseBody){
-    res.render('letra-detalle', {music: responseBody});
+    console.log(responseBody);
+    console.log("letra detalblea");
+    res.render('letra-detalle', {
+            title:responseBody.song.titulo,
+            song: responseBody.song,
+            publish:responseBody
+    });
 };
 
 var renderHomepage = function(req, res, responseBody){
@@ -37,7 +43,7 @@ module.exports.createPublish = function(req, res){
         url : apiOptions.server + path,
         method : "POST",
         json : {
-                user_name: req.body.username,
+                user_name: req.body.user_name,
                 titulo: req.body.titulo,
                 genres: req.body.genres.split(","),
                 album: req.body.album,
