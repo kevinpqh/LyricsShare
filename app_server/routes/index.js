@@ -5,8 +5,11 @@ var router = express.Router();
 var ctrlLetras = require('../controllers/letras');
 var ctrlUsuario = require('../controllers/usuario');
 var ctrlComentario = require('../controllers/comentario');
+
+var ctrlOthers = require('../controllers/others');
+
 /* GET home page. */
-router.get('/',ctrlLetras.listaLetras );
+router.get('/',ctrlOthers.angularApp );
 router.get('/detalle/:publishid',ctrlLetras.MostrarLetra);
 //router.get('/detalle/:publishid/comment',ctrlLetras.CrearComentario);
 router.get('/upload',ctrlLetras.uploadLetra);
