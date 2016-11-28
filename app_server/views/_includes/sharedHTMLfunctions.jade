@@ -4,5 +4,10 @@ mixin formatDate(dateString)
   -var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
   -var m = monthNames[date.getMonth()];
   -var y = date.getFullYear();
-  -var output = d + ' ' + m + ' ' + y;
+
+  -var h = date.getHours();
+  -var n= date.getMinutes();
+
+  -var output = d + ' ' + m + ' ' + y + ' a las '+ h + ':' +n;
+
   =output
