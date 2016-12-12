@@ -1,5 +1,5 @@
 doctype html
-html
+html(ng-app='lyricsShareApp')
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -133,7 +133,8 @@ html
       .content-wrapper
         section.content
 
-          block content
+          div(ng-view)
+            block content
 
       footer.main-footer
         // To the right
@@ -145,6 +146,11 @@ html
           a(href='#') Company
           | .
         |  All rights reserved.
+    script(src='/Angular/angular.min.js')
+    script(src='/lib/angular-route.min.js')
+    script(src='/app.js')
+    script(src='/home/home.controller.js')
+    script(src='/common/services/lyricsShareData.service.js')
     // jQuery 2.2.3
     script(src='/plugins/jQuery/jquery-2.2.3.min.js')
     // Bootstrap 3.3.6

@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-2 col-xs-0"></div>
+  <div class="col-md-8 col-xs-12">
+    <div class="box box-widget" ng-repeat="publish in vm.data.publish">
+      <div class="box-header with-border">
+        <div class="user-block"><img src="/../dist/img/user1-128x128.jpg" alt="User Image" class="img-circle"/><span class="username"><a href="#">{{publish.user_name}}</a></span><span class="description">Publico - {{publish.date}} a las {{publish.date.hour}}</span></div>
+        <div class="box-tools">
+          <button type="button" data-toggle="tooltip" title="Marcar como visto" class="btn btn-box-tool"><i class="fa fa-circle-o"></i></button>
+          <button type="button" data-widget="collapse" class="btn btn-box-tool"><i class="fa fa-minus"></i></button>
+          <button type="button" data-widget="remove" class="btn btn-box-tool"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-5"><img src="/dist/img/imagen03.jpg" alt="Photo" class="img-responsive pad"/></div>
+          <div class="col-md-7">
+            <h4 class="attachment-heading"><a href="/detalle/{{publish._id}}">{{publish.song.titulo}}</a></h4>
+            <p>{{publish.song.lyrics}}</p>
+          </div>
+        </div>
+        <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Compartir</button>
+        <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> MeGusta</button><span class="pull-right text-muted">{{publish.likes}} MeGusta - publish.comments.lenght() Comentarios    </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 col-xs-0"></div>
+</div>
