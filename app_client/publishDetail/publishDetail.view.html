@@ -1,0 +1,95 @@
+<div class="wrapper">
+    <navigation></navigation>
+    
+    <aside class="main-sidebar"></aside>
+    
+    <div class="content-wrapper">
+        <br/>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="/dist/img/photo2.png" alt="Photo" class="img-responsive pad no-padding"/>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <div class="box-body">
+                                <div class="user-block">
+                                    <img src="/../dist/img/user1-128x128.jpg" alt="User Image" class="img-circle"/>
+                                    <span class="username">
+                                        <a href="#">publish.user_name</a>
+                                    </span>
+                                    <span class="description">{{vm.pageHeader.title}}Publico - HOY a las 7:30 PM</span>
+                                </div>
+                                <ul class="list-inline">
+                                    <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Compartir</a></li>
+                                    <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
+                                    <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comentarios (5)</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="col-md-12">
+                    <div class="box panel panel-default">
+                        <div class="box-header panel-heading">
+                            <h3 class="box-title">song.titulo</h3>
+                        </div>
+                        <div class="box-body">
+                            <table class="table table-condensed">
+                                <tr>
+                                    <th>GENERO</th>
+                                    <td><span class="badge bg-red">song.genres</span></td>
+                                </tr>
+                                <tr>
+                                    <th>ALBUM</th>
+                                    <td><span class="badge bg-yellow">song.album</span></td>
+                                </tr>
+                                <tr>
+                                    <th>INTERPRETE</th>
+                                    <td><span class="badge bg-light-blue">song.autor</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-12">
+                    <div class="box-footer box-comments">
+                        <div class="box-comment">
+                            <img src="/dist/img/user4-128x128.jpg" alt="User Image" class="img-circle img-sm"/>
+                            <div class="comment-text">
+                                <span class="username">commenta.user_name
+                                    <span class="text-muted pull-right">
+                                        <commenta class="date"></commenta>
+                                    </span>
+                                </span>commenta.post
+                                <button type="button" data-widget="remove" class="btn btn-box-tool pull-right">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                                <button type="button" data-widget="remove" class="btn btn-box-tool pull-right">
+                                    <i class="fa fa-remove"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="box-footer">
+                    <form action="/detalle/publish._id/comment" method="post" role="form">
+                        <img src="/dist/img/user4-128x128.jpg" alt="Alt Text" class="img-responsive img-circle img-sm"/>
+                        <div class="img-push">
+                            <input type="text" name="user_name" placeholder="Press enter to user save" class="form-control input-sm"/>
+                            <input type="text" name="post" placeholder="Press enter to post comment" class="form-control input-sm"/>
+                        </div>
+                        <button type="submit" value="enviar" class="btn btn-default"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer-generic></footer-generic>
+</div>

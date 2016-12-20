@@ -1,0 +1,161 @@
+doctype html
+html(ng-app='lyricsShareApp')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title LyricsShare
+    meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
+    // bootstrap
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+    // Font Awesome
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')
+    // Ionicons
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css')
+    // Theme style
+    link(rel='stylesheet', href='/dist/css/AdminLTE.min.css')
+    // color pantalla
+    link(rel='stylesheet', href='/dist/css/skins/skin-green.min.css')
+    //mi estilo
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+
+  body.skin-green.fixed(data-spy='scroll', data-target='#scrollspy')
+    .wrapper
+      header.main-header
+        // LOGO
+        a.logo(href='#')
+          span.logo-mini
+            b L
+            | S
+          span.logo-lg
+            b Lyrics
+            | Share
+        // Barra Navegacion
+        nav.navbar.navbar-fixed-top(role='navigation')
+          // BOTON
+          a.sidebar-toggle(href='#', data-toggle='offcanva', role='button')
+            span.sr-only Toggle navigation
+          form.navbar-form.navbar-left(role='search')
+            .input-group.form-group
+              input#navbar-search-input.form-control(type='text', placeholder='Search')
+              span.input-group-btn
+                button#search-btn.btn.btn-flat(type='submit', name='search')
+                  i.fa.fa-search
+          .navbar-custom-menu
+            ul.nav.navbar-nav
+              li.dropdown.messages-menu
+                a.dropdown-toggle(href='#', data-toggle='dropdown')
+                  i.fa.fa-envelope-o
+                  span.label.label-danger 4
+                ul.dropdown-menu
+                  li.header Tienes 4 Mensajes
+                  li
+                    ul.menu
+                      li
+                        // INICIO DE MENSAJE
+                        a(href='#')
+                          .pull-left
+                            img.img-circle(src='/dist/img/user2-160x160.jpg', alt='User Image')
+                          h4
+                            | Support Team
+                            small
+                              i.fa.fa-clock-o
+                              |  5 mins
+                          // The message
+                          p este es el mensaje
+                      li
+                        // ESTO ES UNA REPETICION
+                        a(href='#')
+                          .pull-left
+                            img.img-circle(src='/dist/img/user2-160x160.jpg', alt='User Image')
+                          h4
+                            | Support Team
+                            small
+                              i.fa.fa-clock-o
+                              |  5 mins
+                          // The message
+                          p este es el mensaje
+                  li.footer
+                    a(href='#') Ver todos los mensajes
+              li.dropdown.notifications-menu
+                a.dropdown-toggle(href='#', data-toggle='dropdown')
+                  i.fa.fa-bell-o
+                  span.label.label-warning 10
+                ul.dropdown-menu
+                  li.header Tienes 10 Notificaciones
+                  li
+                    ul.menu
+                      li
+                        // INICIO DE NOTIFICACIONES
+                        a(href='#')
+                          i.fa.fa-users.text-aqua
+                          |  5 nuevas letras
+                  li.footer
+                    a(href='#') Ver Todo
+              li.dropdown.user.user-menu
+                a.dropdown-toggle(href='#', data-toggle='dropdown')
+                  img.user-image(src='/dist/img/user7-128x128.jpg', alt='user image')
+                  span.hidden-xs
+                    | Kevin Quispe 
+                    span.caret
+                ul.dropdown-menu
+                  li.user-header
+                    img.img-circle(src='/dist/img/user2-160x160.jpg', alt='User Image')
+                    p
+                      | Kevin Quispe
+                      small Miembro desde Jun. 2016
+                  li.user-body
+                    ul.list-group
+                      li.list-group-item
+                        a(href='#')
+                          i.fa.fa-user
+                          |  My Profile
+                      li.list-group-item
+                        a(href='#')
+                          i.fa.fa-calendar
+                          |  My Calendar
+                      li.list-group-item
+                        a(href='#')
+                          i.fa.fa-envelope
+                          |  My Inbox
+                        span.badge.badge-danger 3
+                      li.list-group-item
+                        a(href='#')
+                          i.fa.fa-tasks
+                          |  My Tasks
+                        span.badge.badge-success 7
+                  li.user-footer
+                    .col-md-6.col-md-offset-3
+                      a.btn.btn-default.btn-flat(href='#')
+                        i.fa.fa-key
+                        |   Log Out
+      aside.main-sidebar
+      .content-wrapper
+        section.content
+
+          div(ng-view)
+            block content
+
+      footer.main-footer
+        // To the right
+        .pull-right.hidden-xs
+          | Anything you want
+        // Default to the left
+        strong
+          | Copyright © 2016
+          a(href='#') Company
+          | .
+        |  All rights reserved.
+    script(src='/Angular/angular.min.js')
+    script(src='/lib/angular-route.min.js')
+    script(src='/app.js')
+    script(src='/home/home.controller.js')
+    script(src='/common/services/lyricsShareData.service.js')
+    // jQuery 2.2.3
+    script(src='/plugins/jQuery/jquery-2.2.3.min.js')
+    // Bootstrap 3.3.6
+    script(src='/bootstrap/js/bootstrap.min.js')
+    // AdminLTE App
+    script.
+      $("body").addClass('sidebar-collapse').trigger('collapsed.pushMenu');
+    script(src='/dist/js/app.min.js')

@@ -1,0 +1,90 @@
+<header class="main-header">
+        <!-- LOGO-->
+        <a href="#" class="logo"><span class="logo-mini"><b>L</b>S</span><span class="logo-lg"><b>Lyrics</b>Share</span></a>
+        <!-- Barra Navegacion-->
+        <nav role="navigation" class="navbar navbar-fixed-top">
+          <!-- BOTON-->
+          <a href="#" data-toggle="offcanva" role="button" class="sidebar-toggle">
+            <span class="sr-only">Toggle navigation</span>
+          </a>
+          <form role="search" class="navbar-form navbar-left">
+            <div class="input-group form-group">
+              <input id="navbar-search-input" type="text" placeholder="Search" class="form-control"><span class="input-group-btn">
+                <button id="search-btn" type="submit" name="search" class="btn btn-flat"><i class="fa fa-search"></i></button></span>
+            </div>
+          </form>
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              <li class="dropdown messages-menu"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-envelope-o"></i><span class="label label-danger">4</span></a>
+                <ul class="dropdown-menu">
+                  <li class="header">Tienes 4 Mensajes</li>
+                  <li>
+                    <ul class="menu">
+                      <li>
+                        <!-- INICIO DE MENSAJE--><a href="#">
+                          <div class="pull-left"><img src="/dist/img/user2-160x160.jpg" alt="User Image" class="img-circle"></div>
+                          <h4>Support Team<small><i class="fa fa-clock-o"></i> 5 mins</small></h4>
+                          <!-- The message-->
+                          <p>este es el mensaje</p></a>
+                      </li>
+                      <li>
+                        <!-- ESTO ES UNA REPETICION--><a href="#">
+                          <div class="pull-left"><img src="/dist/img/user2-160x160.jpg" alt="User Image" class="img-circle"></div>
+                          <h4>Support Team<small><i class="fa fa-clock-o"></i> 5 mins</small></h4>
+                          <!-- The message-->
+                          <p>este es el mensaje</p></a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="footer"><a href="#">Ver todos los mensajes</a></li>
+                </ul>
+              </li>
+              <li class="dropdown notifications-menu"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-bell-o"></i><span class="label label-warning">10</span></a>
+                <ul class="dropdown-menu">
+                  <li class="header">Tienes 10 Notificaciones</li>
+                  <li>
+                    <ul class="menu">
+                      <li>
+                        <!-- INICIO DE NOTIFICACIONES--><a href="#"><i class="fa fa-users text-aqua"></i> 5 nuevas letras</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="footer"><a href="#">Ver Todo</a></li>
+                </ul>
+              </li>
+              <li ng-hide="navvm.isLoggedIn" class="dropdown user user-menu">
+                <a href="/#registro/?page={{ navvm.currentPath}}" >
+                  <span class="hidden-xs">Registrarse</span>
+                </a>
+              </li>
+              <li class="dropdown user user-menu">
+                <a ng-hide="navvm.isLoggedIn" href="/#login/?page={{ navvm.currentPath}}" >
+                  <span class="hidden-xs">Iniciar Sesion</span>
+                </a>
+                <a ng-show="navvm.isLoggedIn" href="" data-toggle="dropdown" class="dropdown-toggle">
+                  <img src="/dist/img/user7-128x128.jpg" alt="user image" class="user-image">
+                  <span class="hidden-xs">{{navvm.currentUser.name}} <span class="caret"></span></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="user-header"><img src="/dist/img/user2-160x160.jpg" alt="User Image" class="img-circle">
+                    <p>Kevin Quispe<small>Miembro desde Jun. 2016</small></p>
+                  </li>
+                  <li class="user-body">
+                    <ul class="list-group">
+                      <li class="list-group-item"><a href="#"><i class="fa fa-user"></i> My Profile</a></li>
+                      <li class="list-group-item"><a href="#"><i class="fa fa-calendar"></i> My Calendar</a></li>
+                      <li class="list-group-item"><a href="#"><i class="fa fa-envelope"></i> My Inbox</a><span class="badge badge-danger">3</span></li>
+                      <li class="list-group-item"><a href="#"><i class="fa fa-tasks"></i> My Tasks</a><span class="badge badge-success">7</span></li>
+                    </ul>
+                  </li>
+                  <li class="user-footer">
+                    <div class="col-md-6 col-md-offset-3">
+                      <a href="#" ng-click="navvm.logout()" class="btn btn-default btn-flat"><i class="fa fa-key"></i> Log Out</a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>

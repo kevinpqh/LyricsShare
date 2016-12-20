@@ -18,7 +18,7 @@
         
         vm.message = "Searching for nearby places";
         
-        lyricsShareData.publishById()
+        lyricsShareData.listPublishById()
             .success(function(data) {
                 vm.message = data.length > 0 ? "" : "No publish found nearby";
                 vm.data = { publish: data };

@@ -1,0 +1,24 @@
+    <div class="login-box">
+      <div class="login-box-body">
+        <div class="login-logo"><a href="#"><b>Lyrics</b>Share</a></div>
+        <form ng-submit="vm.onSubmit()">
+          <div role="alert" ng-show="vm.formError" class="alert alert-danger">{{ vm.formError }}</div>
+          <div class="form-group has-feedback">
+            <input placeholder="Email" class="form-control" ng-model="vm.credentials.email">
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input type="password" placeholder="Password" class="form-control" ng-model="vm.credentials.password">
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+          
+          <div class="form-group has-feedback">
+            <button type="submit" class="btn btn-success btn-block">Iniciar</button>
+          </div>
+        </form>
+        <div class="social-auth-links text-center">
+          <p>- OR -</p>
+        </div>
+        <a href="/#registro?page={{ vm.returnPage }}" class="text-center">Nuevo Usuario</a>
+      </div>
+    </div>
