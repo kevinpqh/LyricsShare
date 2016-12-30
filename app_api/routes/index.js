@@ -26,14 +26,12 @@ router.get('/publish/:publishid', ctrlPublish.PublishReadOne);//motrar un ususri
 router.put('/publish/:publishid', auth,ctrlPublish.PublishUpdateOne);// actualizar un ususrios en especifico
 router.delete('/publish/:publishid', auth,ctrlPublish.PublishDeleteOne); //deliminar  un ususrios en especifico
 
-
-
 /*Comentarios api*/
 //router.get('/publish/:publishid/comment', ctrlComment.CommentListById);//obtenemos la lista de ususrios
-router.post('/publish/:publishid/comment',auth, ctrlComment.CommentCreate);//creaar ususrios
+router.post('/publish/:publishid/comment',ctrlComment.CommentCreate);//creaar ususrios
 router.get('/publish/:publishid/comment/:commentid', ctrlComment.CommentReadOne);//motrar un ususrios en especifico
-router.put('/publish/:publishid/comment/:commentid',auth,ctrlComment.CommentUpdateOne);// actualizar un ususrios en especifico
-router.delete('/publish/:publishid/comment/:commentid',auth, ctrlComment.CommentDeleteOne); //deliminar  un ususrios en especifico
+router.put('/publish/:publishid/comment/:commentid',ctrlComment.CommentUpdateOne);// actualizar un ususrios en especifico
+router.delete('/publish/:publishid/comment/:commentid',ctrlComment.CommentDeleteOne); //deliminar  un ususrios en especifico
 
 /*LOGIN DE USUARIO*/
 

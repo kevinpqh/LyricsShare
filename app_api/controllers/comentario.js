@@ -38,6 +38,7 @@ module.exports.CommentCreate = function(req, res){//crear un comenetario
             sendJsonResponse(res, 400, err);
           } else {
             doAddComment(req, res, publish);
+
           }
         }
     );
@@ -63,8 +64,8 @@ var doAddComment = function(req, res, publish) {
         console.log(err);
         sendJsonResponse(res, 400, err);
       } else {
-
-        sendJsonResponse(res, 201, {"success": "Bien"});
+        thisComment = publish.comments[publish.comments.length - 1];
+        sendJsonResponse(res, 201, thisComment);
       }
     });
   }

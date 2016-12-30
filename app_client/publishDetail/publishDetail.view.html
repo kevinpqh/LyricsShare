@@ -1,8 +1,8 @@
 <div class="wrapper">
     <navigation></navigation>
-    
+
     <aside class="main-sidebar"></aside>
-    
+
     <div class="content-wrapper">
         <br/>
         <div class="row">
@@ -17,9 +17,9 @@
                                 <div class="user-block">
                                     <img src="/../dist/img/user1-128x128.jpg" alt="User Image" class="img-circle"/>
                                     <span class="username">
-                                        <a href="#">publish.user_name</a>
+                                        <a href="#">{{vm.data.publish.user_name}} </a>
                                     </span>
-                                    <span class="description">{{vm.pageHeader.title}}Publico - HOY a las 7:30 PM</span>
+                                    <span class="description">Publico {{vm.data.publish.date |date : 'd MMMM yyyy'}}</span>
                                 </div>
                                 <ul class="list-inline">
                                     <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Compartir</a></li>
@@ -31,63 +31,68 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md-4">
                 <div class="col-md-12">
                     <div class="box panel panel-default">
                         <div class="box-header panel-heading">
-                            <h3 class="box-title">song.titulo</h3>
+                            <h3 class="box-title"> {{vm.data.publish.song.titulo}} </h3>
                         </div>
                         <div class="box-body">
                             <table class="table table-condensed">
                                 <tr>
                                     <th>GENERO</th>
-                                    <td><span class="badge bg-red">song.genres</span></td>
+                                    <td><span class="badge bg-red" ng-repeat="genres in vm.data.publish.song.genres"> {{ genres }} </span></td>
                                 </tr>
                                 <tr>
                                     <th>ALBUM</th>
-                                    <td><span class="badge bg-yellow">song.album</span></td>
+                                    <td><span class="badge bg-yellow">{{vm.data.publish.song.album}} </span></td>
                                 </tr>
                                 <tr>
                                     <th>INTERPRETE</th>
-                                    <td><span class="badge bg-light-blue">song.autor</span></td>
+                                    <td><span class="badge bg-light-blue">{{vm.data.publish.song.autor}} </span></td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-md-12">
-                    <div class="box-footer box-comments">
+                <div class="box-footer">
+                    <form>
+                        <img src="/dist/img/user4-128x128.jpg" alt="Alt Text" class="img-responsive img-circle img-sm"/>
+                        <div class="img-push">
+                            <span class="username" style="font-weight: bold"> {{navvm.currentUser.name}}
+                            <input  ng-model="vm.formCommentData.post" ng-keypress="($event.keyCode == 13)?vm.onCommentSubmit(navvm.currentUser.name):0"  type="text" name="post" placeholder="Press enter to post comment" class="form-control input-sm"/>
+                        </div>
+                        <!-- ng-keypress="($event.keyCode == 13) ? {{vm.onCommentSubmit()}} : 0  "
+                        <button type="submit" value="enviar" class="btn btn-default"></button>-->
+                    </form>
+                </div>
+                  <div class="col-md-12 mine" >
+                    <div class="box-footer box-comments" ng-repeat="comments in vm.data.publish.comments  | orderBy:'date':true">
                         <div class="box-comment">
                             <img src="/dist/img/user4-128x128.jpg" alt="User Image" class="img-circle img-sm"/>
                             <div class="comment-text">
-                                <span class="username">commenta.user_name
+                                <span class="username"> {{comments.user_name}}
                                     <span class="text-muted pull-right">
-                                        <commenta class="date"></commenta>
+                                        <commenta class="date">{{comments.date | date : 'd MM yyyy hh:mm'}}</commenta>
                                     </span>
-                                </span>commenta.post
-                                <button type="button" data-widget="remove" class="btn btn-box-tool pull-right">
+                                </span>{{comments.post}}
+                                <!---->
+                                <button type="button"  ng-click="vm.popupEditForm($index)"  data-widget="remove" class="btn btn-box-tool pull-right">
                                     <i class="fa fa-edit"></i>
                                 </button>
-                                <button type="button" data-widget="remove" class="btn btn-box-tool pull-right">
+                                <button type="button" ng-click="vm.popupDeleteForm($index)"  data-widget="remove" class="btn btn-box-tool pull-right">
                                     <i class="fa fa-remove"></i>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="box-footer">
-                    <form action="/detalle/publish._id/comment" method="post" role="form">
-                        <img src="/dist/img/user4-128x128.jpg" alt="Alt Text" class="img-responsive img-circle img-sm"/>
-                        <div class="img-push">
-                            <input type="text" name="user_name" placeholder="Press enter to user save" class="form-control input-sm"/>
-                            <input type="text" name="post" placeholder="Press enter to post comment" class="form-control input-sm"/>
-                        </div>
-                        <button type="submit" value="enviar" class="btn btn-default"></button>
-                    </form>
-                </div>
+
+
+
+
+              </div>
             </div>
         </div>
     </div>

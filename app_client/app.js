@@ -1,6 +1,6 @@
 (function () {
 
-    angular.module('lyricsShareApp', ['ngRoute']); //ngRouter: se agrega la dependencia del modulo router
+    angular.module('lyricsShareApp', ['ngRoute', 'ui.bootstrap']); //ngRouter: se agrega la dependencia del modulo router
 
     function config ($routeProvider,$locationProvider) {
         $routeProvider
@@ -31,7 +31,7 @@
             })
             .otherwise({redirectTo: '/'});
         $locationProvider.html5Mode(true);//ENCENDEMOS CARACTERISTICAS DE HTML5
-    
+
     };
 
     angular

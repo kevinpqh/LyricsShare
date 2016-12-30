@@ -28,7 +28,8 @@ var appClientFiles = [
 'app_client/auth/register/register.controller.js',
 'app_client/auth/login/login.controller.js',
 'app_client/publishDetail/publishDetail.controller.js',
-'app_client/publishCreate/publishCreate.controller.js',
+'app_client/editModal/editModal.controller.js',
+'app_client/deleteModal/deleteModal.controller.js',
 'app_client/common/services/lyricsShareData.service.js',
 'app_client/common/services/authentication.service.js',
 'app_client/common/services/publishCreate.service.js',
@@ -36,6 +37,7 @@ var appClientFiles = [
 'app_client/common/directives/fileModal/fileModal.directive.js',
 'app_client/common/directives/navigation/navigation.directive.js',
 'app_client/common/directives/footerGeneric/footerGeneric.directive.js'
+
 ];
 var uglified = uglifyJs.minify(appClientFiles, { compress : false });
 
@@ -63,7 +65,7 @@ app.use(passport.initialize());//PARA INICIALIZAR LA AUTENTIFICCCION
 app.use('/api', routesApi);//ESPECIFICA QUE SE USARA la API PARA LAS PETICIONES GET POST DELETE
 
 app.use(function(req, res) {//PARA HACER USO DEL LA APLICACION ANGULAR
-  res.sendfile(path.join(__dirname, 'app_client', 'index.html'));
+  res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
 });
 
 // catch 404 and forward to error handler

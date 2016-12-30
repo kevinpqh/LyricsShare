@@ -1,0 +1,23 @@
+<!-- Modal -->
+<div class="modal-content">
+  <!--ng-submit="vm.onDSubmit()", ,-->
+  <form id="deleteComment" name="deleteComment" ng-submit="vm.onDSubmit()" role="form" >
+    <div class="modal-header">
+      <button type="button"  ng-click="vm.modal.cancel()"   class="close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      <h4 id="myModalLabel" class="modal-title">Editar Comentario </h4>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <div class="col-sm-10">
+          <p style="font-weight: bold">¿Deseas eliminar este comentario?</p>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <center>
+        <button  type="button" ng-click="vm.modal.cancel()" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">OK</button>
+      </center>
+    </div>
+  </form>
+</div>
