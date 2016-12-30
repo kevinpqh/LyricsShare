@@ -24,6 +24,11 @@
                 controller: 'loginCtrl',
                 controllerAs: 'vm'
             })
+             .when('/crear', {
+                templateUrl: '/publishCreate/publishCreate.view.html',
+                controller: 'publishCreateCtrl',
+                controllerAs: 'vm'
+            })
             .otherwise({redirectTo: '/'});
         $locationProvider.html5Mode(true);//ENCENDEMOS CARACTERISTICAS DE HTML5
     

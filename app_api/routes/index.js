@@ -21,7 +21,7 @@ router.delete('/user/:userid', ctrlUser.UserDeleteOne); //deliminar  un ususrios
 
 /*Publicacion api*/
 router.get('/publish', ctrlPublish.PublishListById);//obtenemos la lista de ususrios
-router.post('/publish',auth, ctrlPublish.PublishCreate);//creaar ususrios
+router.post('/publish', ctrlPublish.PublishCreate);//creaar ususrios
 router.get('/publish/:publishid', ctrlPublish.PublishReadOne);//motrar un ususrios en especifico
 router.put('/publish/:publishid', auth,ctrlPublish.PublishUpdateOne);// actualizar un ususrios en especifico
 router.delete('/publish/:publishid', auth,ctrlPublish.PublishDeleteOne); //deliminar  un ususrios en especifico

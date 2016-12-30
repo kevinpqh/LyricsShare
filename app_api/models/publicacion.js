@@ -13,8 +13,7 @@ var SongSchema = new mongoose.Schema({
     album: String,
     autor: { type: String, required: true },
     lyrics: { type: String, required: true },
-    track: String, // cancion mp3
-    image: { type: String, required: true } //El Binary no funciona
+    track: String // cancion mp3
 });
 
 

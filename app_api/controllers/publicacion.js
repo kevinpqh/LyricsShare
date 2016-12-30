@@ -21,8 +21,7 @@ module.exports.PublishListById = function(req,res){
             }
             sendJsonResponse(res, 200, location);
         });
-}
-
+};
 
 module.exports.PublishReadOne = function(req, res) {
     if (req.params && req.params.publishid) {
@@ -49,7 +48,7 @@ module.exports.PublishReadOne = function(req, res) {
 };
 
 module.exports.PublishCreate = function(req, res) {
-    
+
     Loc.create({
         song:{
             titulo: req.body.titulo,
@@ -57,19 +56,16 @@ module.exports.PublishCreate = function(req, res) {
             album: req.body.album,
             autor: req.body.autor,
             lyrics: req.body.lyrics,
-            track: req.body.track, // cancion mp3
-            image: req.body.image //El Binary no funciona
+            track: req.body.track //El Binary no funciona
         },
         user_name : req.body.user_name,
         
-    }, function(err,publish){
-        if(err){
-            console.log(err);
+    }, function(err,publish,req){
+        if(err){    
             sendJsonResponse(res,400,err);
         }else {
-            console.log(publish);
             sendJsonResponse(res,201,publish);
-        }
+        } 
     });    
 };
 
@@ -104,7 +100,6 @@ module.exports.PublishUpdateOne = function(req, res) {
                                 autor: req.body.autor,
                                 lyrics: req.body.lyrics,
                                 track: req.body.track, // cancion mp3
-                                image: req.body.image //El Binary no funciona
                                 }
 
                 publish.save(function(err, publish) {
