@@ -42,6 +42,62 @@
                 });
         };
 
+        vm.facebook = {
+                user_name: "",
+                email: "",
+                password: "",
+                image: ""
+            };
+
+        vm.doLoginFB = function(){
+            var a,b,c,d;
+
+            FB.login(function(response){
+                    if(response.authResponse){
+                FB.api('/me','GET',{fields: 'email, first_name,name,id,picture'},function(response){
+                    $scope.$apply(function(){
+                        
+                        a = response.name;
+                        b = response.email;
+                        c= response.id;
+                        d= response.picture.data.url;
+
+                        vm.credentials = {
+            user_name : a,
+            email : b,
+            password : c,
+            image : d,
+        };
+
+        //console.log();
+        authentication
+                   .fbLogin(vm.credentials)
+                   .error(function(err){
+                    vm.formError = err;
+                })
+                .then(function(){
+                    $location.search('page', null);
+                    $location.path(vm.returnPage);
+                });
+
+                        
+                      
+                    });
+                });
+            } else {
+                //errr
+            }
+            },{
+                scope: 'email, user_likes',
+                return_scopes: true
+            });
+    
+            
+        
+    
+
+        };
+
     }
     
 })();

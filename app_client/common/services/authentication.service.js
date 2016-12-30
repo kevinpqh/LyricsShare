@@ -51,6 +51,13 @@
       });
     };
 
+    fbLogin = function(user) {
+      console.log(user);
+      return $http.post('/api/facebook', user).success(function(data) {
+        saveToken(data.token);
+      });
+    };
+
     logout = function() {
       $window.localStorage.removeItem('lyricsShare-token');
     };
@@ -62,6 +69,7 @@
         isLoggedIn : isLoggedIn,
         register : register,
         login : login,
+        fbLogin: fbLogin,
         logout : logout
     };
   }

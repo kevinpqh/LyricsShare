@@ -5,8 +5,9 @@ var jwt = require('jsonwebtoken');
 
 var UserSchema = new mongoose.Schema({
     name: String, // no requerido para el registro
-    user_name: { type: String, required: true, index: { unique: true } },
-    email: { type: String, required: true },
+    user_name: { type: String, required: true },
+    email: { type: String, required: true, index: { unique: true } },
+    imagen: { type: String,"default":"kevin/kev"  },
     //password: { type: String, required: true },
     hash: String,
     salt: String,
@@ -34,6 +35,7 @@ UserSchema.methods.generateJwt = function() {
         email: this.email,
         name: this.name,
         username: this.user_name,
+        
         exp: parseInt(expiry.getTime() / 1000),
     }, process.env.JWT_SECRET );
 };

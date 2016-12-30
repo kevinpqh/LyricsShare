@@ -64,3 +64,52 @@ module.exports.login = function(req, res) {
     })(req, res);
     
 };
+module.exports.loginfacebook = function (req,res){
+
+    console.log(req.body.email);
+
+    User.findOne({'email': req.body.email})
+			.then(function (user) {
+				if (user) {
+					passport.authenticate('local', function(err, user, info){
+        var token;
+
+        if (err) {
+            sendJSONresponse(res, 404, err);
+            return;
+        }
+
+        if(user){
+            token = user.generateJwt();
+            sendJSONresponse(res, 200, {
+                "token" : token
+            });
+        } else {
+            sendJSONresponse(res, 401, info);
+        }
+    })(req, res);
+				} else {
+					 var user = new User();
+
+    user.user_name = req.body.user_name;
+    user.name = req.body.user_name;
+    user.email = req.body.email;
+    user.imagen =  req.body.image;
+
+    user.setPassword(req.body.password);
+    
+    user.save(function(err) {
+        var token;
+        if (err) {
+            sendJSONresponse(res, 404, err);
+        } else {
+            token = user.generateJwt();
+            sendJSONresponse(res, 200, {
+                "token" : token
+            });
+        }
+    });
+				}
+			});
+
+}

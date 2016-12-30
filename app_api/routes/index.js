@@ -35,6 +35,7 @@ router.delete('/publish/:publishid/comment/:commentid',ctrlComment.CommentDelete
 
 /*LOGIN DE USUARIO*/
 
+router.post('/facebook',ctrlAuth.loginfacebook);
 router.post('/registro',ctrlAuth.register);
 router.post('/login',ctrlAuth.login);
 
