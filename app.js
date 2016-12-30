@@ -28,6 +28,7 @@ var appClientFiles = [
 'app_client/auth/register/register.controller.js',
 'app_client/auth/login/login.controller.js',
 'app_client/publishDetail/publishDetail.controller.js',
+'app_client/publishCreate/publishCreate.controller.js',
 'app_client/editModal/editModal.controller.js',
 'app_client/deleteModal/deleteModal.controller.js',
 'app_client/common/services/lyricsShareData.service.js',
